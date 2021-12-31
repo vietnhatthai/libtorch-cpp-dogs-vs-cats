@@ -89,12 +89,12 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <ExecutablePath>D:\Projects\pytorch-cpp-dogs-vs-cats\libtorch\include;D:\Projects\pytorch-cpp-dogs-vs-cats\libtorch\include\torch\csrc\api\include;D:\Projects\pytorch-cpp-dogs-vs-cats\opencv\build\include;$(ExecutablePath)</ExecutablePath>
+    <ExecutablePath>D:\Projects\pytorch-cpp-dogs-vs-cats\libtorch\include;D:\Projects\pytorch-cpp-dogs-vs-cats\libtorch\include\torch\csrc\api\include;D:\Projects\pytorch-cpp-dogs-vs-cats\opencv\build\include;D:\Projects\pytorch-cpp-dogs-vs-cats\convnet\include;D:\Projects\pytorch-cpp-dogs-vs-cats\convnet\src;$(ExecutablePath)</ExecutablePath>
     <LibraryPath>D:\Projects\pytorch-cpp-dogs-vs-cats\libtorch\lib;D:\Projects\pytorch-cpp-dogs-vs-cats\opencv\build\x64\vc15\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <ExecutablePath>D:\Projects\pytorch-cpp-dogs-vs-cats\libtorch\include;D:\Projects\pytorch-cpp-dogs-vs-cats\libtorch\include\torch\csrc\api\include;D:\Projects\pytorch-cpp-dogs-vs-cats\opencv\build\include;$(ExecutablePath)</ExecutablePath>
+    <ExecutablePath>D:\Projects\pytorch-cpp-dogs-vs-cats\libtorch\include;D:\Projects\pytorch-cpp-dogs-vs-cats\libtorch\include\torch\csrc\api\include;D:\Projects\pytorch-cpp-dogs-vs-cats\opencv\build\include;D:\Projects\pytorch-cpp-dogs-vs-cats\convnet\include;D:\Projects\pytorch-cpp-dogs-vs-cats\convnet\src;$(ExecutablePath)</ExecutablePath>
     <LibraryPath>D:\Projects\pytorch-cpp-dogs-vs-cats\libtorch\lib;D:\Projects\pytorch-cpp-dogs-vs-cats\opencv\build\x64\vc15\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -139,7 +139,7 @@
       <SDLCheck>false</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>D:\Projects\pytorch-cpp-dogs-vs-cats\libtorch\include;D:\Projects\pytorch-cpp-dogs-vs-cats\libtorch\include\torch\csrc\api\include;D:\Projects\pytorch-cpp-dogs-vs-cats\opencv\build\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Projects\pytorch-cpp-dogs-vs-cats\libtorch\include;D:\Projects\pytorch-cpp-dogs-vs-cats\libtorch\include\torch\csrc\api\include;D:\Projects\pytorch-cpp-dogs-vs-cats\opencv\build\include;D:\Projects\pytorch-cpp-dogs-vs-cats\convnet\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -156,7 +156,7 @@
       <SDLCheck>false</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>D:\Projects\pytorch-cpp-dogs-vs-cats\libtorch\include;D:\Projects\pytorch-cpp-dogs-vs-cats\libtorch\include\torch\csrc\api\include;D:\Projects\pytorch-cpp-dogs-vs-cats\opencv\build\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Projects\pytorch-cpp-dogs-vs-cats\libtorch\include;D:\Projects\pytorch-cpp-dogs-vs-cats\libtorch\include\torch\csrc\api\include;D:\Projects\pytorch-cpp-dogs-vs-cats\opencv\build\include;D:\Projects\pytorch-cpp-dogs-vs-cats\convnet\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
