@@ -47,3 +47,8 @@ dataloader = DataLoader(dataset, batch_size=BATCH_SIZE,
 model = ConvNet(NUM_CLASSES)
 model.to(device)
 model.train()
+
+# Loss and optimizer
+criterion = nn.CrossEntropyLoss()
+optimizer = torch.optim.Adam(model.parameters(), lr=LEARING_RATE)
+
