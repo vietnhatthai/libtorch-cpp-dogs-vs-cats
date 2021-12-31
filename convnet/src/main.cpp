@@ -36,5 +36,12 @@ int main()
 	const size_t NUM_EPOCHS = 5;
 	const float TESTSET_SIZE = 0.2;					// 20 -val, 80 -train
 
+	// Neural Network model
+	ConvNet model(NUM_CLASSES);
+	//torch::load(model, "model.pt");
+	model->to(device);
+	model->train();
+	std::cout << model << std::endl;
+
 	return 0;
 }
