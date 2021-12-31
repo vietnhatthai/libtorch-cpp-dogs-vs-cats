@@ -26,3 +26,10 @@ BATCH_SIZE = 64
 LEARING_RATE = 0.001
 NUM_EPOCHS = 5
 TESTSET_SIZE = 0.2
+
+# Transforms
+transform = transforms.Compose([
+    transforms.ToTensor(),
+    transforms.Resize((INPUT_SIZE, INPUT_SIZE)),
+    transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5)),
+])
