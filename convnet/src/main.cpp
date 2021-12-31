@@ -38,7 +38,7 @@ int main()
 	const double LEARING_RATE = 0.001;
 	const size_t NUM_EPOCHS = 5;
 	const float TESTSET_SIZE = 0.2;					// 20 -val, 80 -train
-	const bool IS_TRAIN = false;					// 
+	const bool IS_TRAIN = true;						// 
 	
 	// Neural Network model
 	ConvNet model(NUM_CLASSES);
