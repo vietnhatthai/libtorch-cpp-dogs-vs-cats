@@ -42,3 +42,8 @@ num_inters = num_train_samples//BATCH_SIZE
 
 dataloader = DataLoader(dataset, batch_size=BATCH_SIZE,
                         shuffle=True, num_workers=0)
+
+# Neural Network model
+model = ConvNet(NUM_CLASSES)
+model.to(device)
+model.train()
