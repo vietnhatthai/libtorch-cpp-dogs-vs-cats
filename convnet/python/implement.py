@@ -10,3 +10,11 @@ import numpy as np
 import cv2
 import glob
 import tqdm
+
+# Device
+if torch.cuda.is_available():
+    print("CUDA available. Training on GPU.")
+    device = torch.device("cuda")
+else:
+    print("Training on CPU.")
+    device = torch.device("cpu")
