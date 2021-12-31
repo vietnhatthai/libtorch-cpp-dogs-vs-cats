@@ -20,10 +20,14 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\convnet.cpp" />
+    <ClCompile Include="src\dataset.cpp" />
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\train.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\convnet.h" />
+    <ClInclude Include="include\dataset.h" />
+    <ClInclude Include="include\train.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

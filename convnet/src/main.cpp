@@ -16,6 +16,7 @@
 #include <iomanip>
 
 #include "convnet.h"
+#include "dataset.h"
 
 int main()
 {
@@ -41,7 +42,14 @@ int main()
 	//torch::load(model, "model.pt");
 	model->to(device);
 	model->train();
-	std::cout << model << std::endl;
+	std::cout << std::endl << model << std::endl << std::endl;
 
+	auto datasets = Dataset(data_path, name_classes, INPUT_SIZE, NUM_IMAGES)
+		.map(torch::data::transforms::Normalize<>({ 0.5, 0.5, 0.5 }, { 0.5, 0.5, 0.5 }))
+		.map(torch::data::transforms::Stack<>());
+	// Number of samples in the training set
+	int num_train_samples = datasets.size().value();
+	int num_inters = num_train_samples / BATCH_SIZE;
+	std::cout << "[INFO] num train samples : " << num_train_samples << std::endl;
 	return 0;
 }
