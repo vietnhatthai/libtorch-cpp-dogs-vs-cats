@@ -24,3 +24,7 @@ test_path = 'D:\\Projects\\pytorch-test\\data\\dogcat\\test1'  # test root
 CLASSES = ['dog', 'cat']
 NUM_CLASSES = len(CLASSES)      # 2
 INPUT_SIZE = 224                # 224 -w, 224 -h
+
+# LabelEncoder
+le = LabelEncoder()
+le.fit(CLASSES)
