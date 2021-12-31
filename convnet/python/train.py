@@ -47,8 +47,41 @@ dataloader = DataLoader(dataset, batch_size=BATCH_SIZE,
 model = ConvNet(NUM_CLASSES)
 model.to(device)
 model.train()
+print(model)
 
 # Loss and optimizer
 criterion = nn.CrossEntropyLoss()
 optimizer = torch.optim.Adam(model.parameters(), lr=LEARING_RATE)
 
+print("[INFO] Training...")
+for epoch in range(NUM_EPOCHS):
+    running_loss = 0.0
+    num_correct = 0
+
+    for i, (data, target) in enumerate(dataloader):
+        data = data.to(device)
+        target = target.to(device)
+
+        outputs = model(data)
+
+        loss = criterion(outputs, target)
+        running_loss += loss * len(data)
+
+        prediction = np.argmax(outputs.cpu().detach().numpy(), 1)
+        target = target.cpu().detach().numpy()
+        n_correct = np.sum(prediction == target) 
+        num_correct += n_correct
+
+        n_accuracy = n_correct/len(data)
+
+        if not i % 100:
+            print(f'Epoch [{epoch + 1}/{NUM_EPOCHS}][{i}/{num_inters}], Loss: {loss:0.3f}, Accuracy: {n_accuracy:0.3f}')
+
+        optimizer.zero_grad()
+        loss.backward()
+        optimizer.step()
+        
+    sample_mean_loss = running_loss / num_train_samples
+    accuracy = num_correct / num_train_samples
+
+    print(f'\nEpoch [{epoch + 1}/{NUM_EPOCHS}], Trainset - Loss: {sample_mean_loss:0.3f}, Accuracy: {accuracy:0.3f}\n')
