@@ -106,6 +106,10 @@ int main()
 	}
 
 	// Save model
+	std::cout << "[INFO] Saving model..." << std::endl;
 	torch::save(model, "model.pt");
+
+
+
 	return 0;
 }
