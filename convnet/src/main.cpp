@@ -57,6 +57,10 @@ int main()
 
 	// Optimizer
 	torch::optim::Adam optimizer(model->parameters(), torch::optim::AdamOptions(LEARING_RATE));
+	// Set floating point output precision
+	std::cout << std::fixed << std::setprecision(3);
+	std::cout << "[INFO] Training...\n";
+	
 
 	return 0;
 }
