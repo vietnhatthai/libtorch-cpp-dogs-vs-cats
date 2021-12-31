@@ -28,3 +28,11 @@ INPUT_SIZE = 224                # 224 -w, 224 -h
 # LabelEncoder
 le = LabelEncoder()
 le.fit(CLASSES)
+
+# Transforms
+transform = transforms.Compose([
+    transforms.ToPILImage(),            # convert CV2 to PIL
+    transforms.ToTensor(),
+    transforms.Resize((INPUT_SIZE, INPUT_SIZE)),
+    transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))
+])
