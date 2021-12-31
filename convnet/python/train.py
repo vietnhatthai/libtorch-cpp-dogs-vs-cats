@@ -8,3 +8,11 @@ from dataset import Dataset
 
 import numpy as np
 import tqdm
+
+# Device
+if torch.cuda.is_available():
+    print("CUDA available. Training on GPU.")
+    device = torch.device("cuda")
+else:
+    print("Training on CPU.")
+    device = torch.device("cpu")
