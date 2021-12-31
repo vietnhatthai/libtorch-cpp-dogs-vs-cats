@@ -16,3 +16,13 @@ if torch.cuda.is_available():
 else:
     print("Training on CPU.")
     device = torch.device("cpu")
+
+# Hyperparameters
+data_path = 'D:\\Projects\\pytorch-test\\data\\dogcat\\train'  # data root
+CLASSES = ['dog', 'cat']
+NUM_CLASSES = len(CLASSES)      # 2
+INPUT_SIZE = 224                # 224 -w, 224 -h
+BATCH_SIZE = 64
+LEARING_RATE = 0.001
+NUM_EPOCHS = 5
+TESTSET_SIZE = 0.2
