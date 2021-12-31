@@ -53,10 +53,10 @@ int main()
 	std::cout << "[INFO] num train samples : " << num_train_samples << std::endl;
 
 	// Data loader
-	auto data_loader = torch::data::make_data_loader<torch::data::samplers::RandomSampler>(
-		std::move(datasets), BATCH_SIZE);
+	auto data_loader = torch::data::make_data_loader<torch::data::samplers::RandomSampler>(std::move(datasets), BATCH_SIZE);
 
-
+	// Optimizer
+	torch::optim::Adam optimizer(model->parameters(), torch::optim::AdamOptions(LEARING_RATE));
 
 	return 0;
 }
