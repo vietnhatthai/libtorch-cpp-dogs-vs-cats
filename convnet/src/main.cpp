@@ -19,6 +19,10 @@
 
 int main()
 {
+	// Device
+	bool cuda_available = torch::cuda::is_available();
+	torch::Device device(cuda_available ? torch::kCUDA : torch::kCPU);
+	std::cout << (cuda_available ? "CUDA available. Training on GPU." : "Training on CPU.") << '\n';
 
 	return 0;
 }
