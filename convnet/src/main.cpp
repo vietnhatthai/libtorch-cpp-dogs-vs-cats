@@ -61,6 +61,49 @@ int main()
 	std::cout << std::fixed << std::setprecision(3);
 	std::cout << "[INFO] Training...\n";
 	
+	// Train the model
+	for (size_t epoch = 0; epoch != NUM_EPOCHS; ++epoch) {
+		// Initialize running metrics
+		double running_loss = 0.0;
+		size_t num_correct = 0;
+		int inter = 0;
+		for (auto& batch : *data_loader) {
+			auto data = batch.data.to(device);
+			auto target = batch.target.squeeze().to(device);
+			// Forward pass
+			auto output = model->forward(data);
+			auto loss = torch::nn::functional::cross_entropy(output, target);
+			//auto loss = torch::nll_loss(output.squeeze(), target);
+			//auto loss = torch::nn::functional::binary_cross_entropy(output, target);
+			// Update running loss
+			running_loss += loss.item<double>() * data.size(0);
+
+			// Calculate prediction
+			auto prediction = output.argmax(1);
+			// Update number of correctly classified samples
+			size_t n_correct = prediction.eq(target).sum().item<int64_t>();
+			num_correct += n_correct;
+
+			auto n_accuracy = static_cast<double>(n_correct) / data.size(0);
+
+			if (!inter % 100) {
+				std::cout << "Epoch [" << (epoch + 1) << "/" << NUM_EPOCHS << "][" << inter << "/" << num_inters
+					<< "], Loss = " << loss.item<double>() << ", Accuracy: " << n_accuracy << std::endl;
+			}
+			inter += 1;
+
+			// Backward and optimize
+			optimizer.zero_grad();
+			loss.backward();
+			optimizer.step();
+		}
+
+		auto sample_mean_loss = running_loss / num_train_samples;
+		auto accuracy = static_cast<double>(num_correct) / num_train_samples;
+
+		std::cout << "\nEpoch [" << (epoch + 1) << "/" << NUM_EPOCHS << "], Trainset - Loss: "
+			<< sample_mean_loss << ", Accuracy: " << accuracy << '\n\n';
+	}
 
 	return 0;
 }
