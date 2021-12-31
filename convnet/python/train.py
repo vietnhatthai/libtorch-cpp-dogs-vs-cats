@@ -85,3 +85,6 @@ for epoch in range(NUM_EPOCHS):
     accuracy = num_correct / num_train_samples
 
     print(f'\nEpoch [{epoch + 1}/{NUM_EPOCHS}], Trainset - Loss: {sample_mean_loss:0.3f}, Accuracy: {accuracy:0.3f}\n')
+
+    # Save model per epoch
+    torch.save(model.state_dict(), 'model.pth')
