@@ -121,5 +121,25 @@ int main()
 	model->eval();
 	torch::NoGradGuard no_grad;
 
+	// Prediction data test
+	cv::Mat image;
+	for (int i = 1; i <= NUM_IMAGES_TEST; i++)
+	{
+		image = cv::imread(test_path + "\\" + std::to_string(i) + ".jpg");
+		cv::resize(image, image, cv::Size(INPUT_SIZE, INPUT_SIZE));
+		torch::Tensor img_tensor = torch::from_blob(image.data, { image.rows, image.cols, 3 }, torch::kByte).clone();
+		img_tensor = img_tensor.permute({ 2, 0, 1 });			// convert to CxHxW
+		img_tensor = torch::data::transforms::Normalize<>({ 0.5, 0.5, 0.5 }, { 0.5, 0.5, 0.5 })(img_tensor);
+		img_tensor = img_tensor.unsqueeze(0).to(device);
+		auto output = model->forward(img_tensor);
+		std::string prediction = name_classes[output.argmax(1).item<int>()];
+		std::cout << "[TEST] Prediction : " << prediction << std::endl;
+
+		cv::putText(image, prediction, { 0, 30 }, cv::FONT_HERSHEY_SIMPLEX, 1, { 0, 0, 255 }, 2);
+		cv::imshow("image", image);
+		if (cv::waitKey(1) == 'q')
+			break;
+	}
+
 	return 0;
 }
