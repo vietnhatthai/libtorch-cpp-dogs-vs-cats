@@ -351,3 +351,6 @@ MigrationBackup/
 
 # libtorch
 libtorch/
+
+# opencv
+opencv/
