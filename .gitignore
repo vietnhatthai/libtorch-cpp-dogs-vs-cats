@@ -354,3 +354,6 @@ libtorch/
 
 # opencv
 opencv/
+
+# .dll files
+*.dll
