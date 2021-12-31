@@ -72,7 +72,7 @@ int main()
 			// Initialize running metrics
 			double running_loss = 0.0;
 			size_t num_correct = 0;
-			int inter = 0;
+			int iter = 0;
 			for (auto& batch : *data_loader) {
 				auto data = batch.data.to(device);
 				auto target = batch.target.squeeze().to(device);
@@ -92,11 +92,11 @@ int main()
 
 				auto n_accuracy = static_cast<double>(n_correct) / data.size(0);
 
-				if (!inter % 100) {
+				if (!iter % 100) {
 					std::cout << "Epoch [" << (epoch + 1) << "/" << NUM_EPOCHS << "][" << inter << "/" << num_inters
 						<< "], Loss = " << loss.item<double>() << ", Accuracy: " << n_accuracy << std::endl;
 				}
-				inter += 1;
+				iter += 1;
 
 				// Backward and optimize
 				optimizer.zero_grad();
