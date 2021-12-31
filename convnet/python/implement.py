@@ -36,3 +36,10 @@ transform = transforms.Compose([
     transforms.Resize((INPUT_SIZE, INPUT_SIZE)),
     transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))
 ])
+
+# Neural Network model
+model = ConvNet(NUM_CLASSES)
+model.load_state_dict(torch.load('model.pth'))
+model.to(device)
+model.eval()
+print(model)
