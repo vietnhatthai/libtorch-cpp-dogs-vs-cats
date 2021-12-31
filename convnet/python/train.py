@@ -33,3 +33,12 @@ transform = transforms.Compose([
     transforms.Resize((INPUT_SIZE, INPUT_SIZE)),
     transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5)),
 ])
+
+# Data loader
+dataset = Dataset(data_path, CLASSES, transform)
+
+num_train_samples = len(dataset)
+num_inters = num_train_samples//BATCH_SIZE
+
+dataloader = DataLoader(dataset, batch_size=BATCH_SIZE,
+                        shuffle=True, num_workers=0)
