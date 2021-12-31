@@ -51,5 +51,12 @@ int main()
 	int num_train_samples = datasets.size().value();
 	int num_inters = num_train_samples / BATCH_SIZE;
 	std::cout << "[INFO] num train samples : " << num_train_samples << std::endl;
+
+	// Data loader
+	auto data_loader = torch::data::make_data_loader<torch::data::samplers::RandomSampler>(
+		std::move(datasets), BATCH_SIZE);
+
+
+
 	return 0;
 }
