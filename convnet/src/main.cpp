@@ -38,7 +38,7 @@ int main()
 	const double LEARING_RATE = 0.001;
 	const size_t NUM_EPOCHS = 5;
 	const float TESTSET_SIZE = 0.2;					// 20 -val, 80 -train
-	const bool IS_TRAIN = true;						// 
+	const bool IS_TRAIN = false;						// 
 	
 	// Neural Network model
 	ConvNet model(NUM_CLASSES);
@@ -93,7 +93,7 @@ int main()
 				auto n_accuracy = static_cast<double>(n_correct) / data.size(0);
 
 				if (!iter % 100) {
-					std::cout << "Epoch [" << (epoch + 1) << "/" << NUM_EPOCHS << "][" << inter << "/" << num_inters
+					std::cout << "Epoch [" << (epoch + 1) << "/" << NUM_EPOCHS << "][" << iter << "/" << num_inters
 						<< "], Loss = " << loss.item<double>() << ", Accuracy: " << n_accuracy << std::endl;
 				}
 				iter += 1;
